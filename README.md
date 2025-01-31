@@ -1,17 +1,6 @@
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torchvision import models
-from transformers import BertModel
 
-class VisionEncoder(nn.Module):
-    def __init__(self, embed_dim=512):
-        super().__init__()
-        self.model = models.resnet50(pretrained=True)
-        self.model.fc = nn.Linear(self.model.fc.in_features, embed_dim)
+#CLIP
 
-    def forward(self, images):
-        return self.model(images)
 
 class TextEncoder(nn.Module):
     def __init__(self, embed_dim=512):
@@ -23,6 +12,16 @@ class TextEncoder(nn.Module):
         outputs = self.bert(input_ids, attention_mask=attention_mask)
         cls_embedding = outputs.last_hidden_state[:, 0, :]  # CLS 토큰 사용
         return self.fc(cls_embedding)
+
+
+class VisionEncoder(nn.Module):
+    def __init__(self, embed_dim=512):
+        super().__init__()
+        self.model = models.resnet50(pretrained=True)
+        self.model.fc = nn.Linear(self.model.fc.in_features, embed_dim)
+
+    def forward(self, images):
+        return self.model(images)
 
 
 class CLIP(nn.Module):
