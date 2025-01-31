@@ -24,6 +24,7 @@ class TextEncoder(nn.Module):
         cls_embedding = outputs.last_hidden_state[:, 0, :]  # CLS 토큰 사용
         return self.fc(cls_embedding)
 
+
 class CLIP(nn.Module):
     def __init__(self, embed_dim=512):
         super().__init__()
