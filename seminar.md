@@ -27,6 +27,7 @@
 - 논문 3편 (전서경)
 
 # Assignment ( ~ 7월5일 )
+- 딥러닝 Advanced AI를 위한 FAQ 학습
 - Resnet, SE, CBAM, Depthwise, Transformer, 5가지 조합 모델로 20개이상 github 업로드 (UCI-HAR 데이터세트 기반)
 - 신승민, 전서경, 한여원, 고정수
 
